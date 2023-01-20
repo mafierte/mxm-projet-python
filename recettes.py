@@ -14,13 +14,6 @@ from tools import Req
 from admin import Admin
 import formatA6
 
-# from reçuA6 import MyPDF
-# from xxxx import  FPDF
-# #from monreçu import generer_pdf
-# from fPDF import createPdf
-# from fpdf import FPDF
-# import decimal
-#from connect import Connect
 
 
 class Recettes(QtWidgets.QMainWindow):
@@ -56,8 +49,7 @@ class Recettes(QtWidgets.QMainWindow):
 
         self.Ui.AdmissionBtn.clicked.connect(lambda : self.Ui.PageMenu.setCurrentIndex(3))
         self.Ui.RetourCommandeBtn.clicked.connect(lambda: self.Ui.PageMenu.setCurrentIndex(5))
-        # self.Ui.StockPageBtn.clicked.connect(lambda : self.Ui.PageMenu.setCurrentIndex(4))
-        # self.Ui.ProduitPageBtn.clicked.connect(lambda : self.Ui.PageMenu.setCurrentIndex(1))
+
 
 
         #self.Ui.CaisseBtn.clicked.connect(lambda : self.Ui.PageMenu.setCurrentIndex(4))
@@ -283,15 +275,6 @@ class Recettes(QtWidgets.QMainWindow):
         self.Ui.ProduitCatPatientBox.clear()
         self.Ui.ProduitCompteBudgetBox.clear()
 
-        # for i in self.AdminInstance.ShowConditionnement():
-        #     self.IdConditionnement = i[0]
-        #     Conditionnement = i[1]
-        #     self.Ui.ProduitConditionnBox.addItem(Conditionnement)
-        #
-        # for i in self.AdminInstance.ShowDatePeremption():
-        #     self.IdDatePeremption = i[0]
-        #     DatePeremption = i[1]
-        #     self.Ui.ProduitDatePeremptionBox.addItem(DatePeremption)
 
         for i in self.AdminInstance.ShowCatSoins():
             self.IdCatSoins = i[0]
@@ -442,15 +425,6 @@ class Recettes(QtWidgets.QMainWindow):
             self.Ui.ProduitCatPatientBox.setCurrentText("")
             self.Ui.ProduitCompteBudgetBox.setCurrentText("")
 
-    # ce code va ajouter en même temps l'acte' crée dans la table stock
-    # récupération de l'IdProduit et créer les infos compléméntaires de la table stock (Id,IdProduit,Libelle,Quantite)
-
-            # IdProduit = self.ReqInstance.GetProduitIdByName(Libelle)
-            # #Libelle, on l'a déjà dans cette méthode
-            # Quantite = 0   # parce que dans cette méthode on ne la connait pas
-            # Data = (IdProduit, Libelle, Quantite)
-            # self.ReqInstance.AddToStock(Data)   # pour exécuter ma requête d'ajout dans la table stock
-
 
     # Afficher les actes
 
@@ -470,11 +444,7 @@ class Recettes(QtWidgets.QMainWindow):
             self.Ui.TableauProduit.topLevelItem(Ligne).setText(7, str(i[7]))
             self.Ui.TableauProduit.topLevelItem(Ligne).setText(8, str(i[8]))
             self.Ui.TableauProduit.topLevelItem(Ligne).setText(9, str(i[9]))
-            """
-            self.Ui.TableauProduit.topLevelItem(Ligne).setText(10, str(i[10]))
-            self.Ui.TableauProduit.topLevelItem(Ligne).setText(11, str(i[11]))
-            self.Ui.TableauProduit.topLevelItem(Ligne).setText(12, str(i[12]))
-            """
+
             Ligne += 1                                                             # j'incrémente Ligne à 1
 
     # Modifier un produit existant
@@ -824,26 +794,6 @@ class Recettes(QtWidgets.QMainWindow):
             self.Ui.AjoutCommandeProduitBox.addItem(Libelle)
             self.Ui.MsgErreurIdCommande.hide()
 
-            # self.Ui.PageContent.setCurrentIndex(5)
-            # self.Ui.PageMenu.setCurrentIndex(2)
-            # self.Ui.TableauClient.clear()  # vider le tableau
-            # Ligne = 0  # je crée l'instance Ligne qui prend la valeur 0
-            # for i in self.ReqInstance.ShowClient():
-            #     QtWidgets.QTreeWidgetItem(self.Ui.TableauClient)  # je crée une ligne vide
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(0, str(i[0]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(1, str(i[1]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(2, str(i[2]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(3, str(i[3]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(4, str(i[4]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(5, str(i[5]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(6, str(i[6]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(7, str(i[7]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(8, str(i[8]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(9, str(i[9]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(10, str(i[10]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(11, str(i[11]))
-            #     self.Ui.TableauClient.topLevelItem(Ligne).setText(12, str(i[12]))
-            #     Ligne += 1
 
     def RemplirNomPatient(self):
         NomPrenoms = self.Ui.AjoutCommandePatientBox.currentText()
@@ -925,27 +875,6 @@ class Recettes(QtWidgets.QMainWindow):
             self.Ui.AjoutCommandeInamProduitBox.addItem(Libelle)
             self.Ui.MsgErreurIdCommandeInam.hide()
 
-
-            # self.Ui.PageContent.setCurrentIndex(20)
-            # self.Ui.PageMenu.setCurrentIndex(2)
-            # self.Ui.TableauClientInam.clear()  # vider le tableau
-            # Ligne = 0  # je crée l'instance Ligne qui prend la valeur 0
-            # for i in self.ReqInstance.ShowClient():
-            #     QtWidgets.QTreeWidgetItem(self.Ui.TableauClientInam)  # je crée une ligne vide
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(0, str(i[0]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(1, str(i[1]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(2, str(i[2]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(3, str(i[3]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(4, str(i[4]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(5, str(i[5]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(6, str(i[6]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(7, str(i[7]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(8, str(i[8]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(9, str(i[9]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(10, str(i[10]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(11, str(i[11]))
-            #     self.Ui.TableauClientInam.topLevelItem(Ligne).setText(12, str(i[12]))
-            #     Ligne += 1
 
     def RemplirNomPatientInam(self):
         NomPrenoms = self.Ui.AjoutCommandePatientInamBox.currentText()
@@ -1138,10 +1067,6 @@ class Recettes(QtWidgets.QMainWindow):
                 Qte = self.Ui.AjoutCommandeQteLineEdit.text()               # récupérer la valeur de quantité
                 Taux = self.Ui.AjoutCommandeAssureTauxLineEdit.text()
 
-                # MontantBrut = self.Ui.AjoutCommandeMontantBrut.text()
-                # MontantPec = self.Ui.AjoutCommandeMontantPec.text()
-                # MontantRecu = self.Ui.AjoutCommandeMontantRecu.text()
-
                 Libelle = self.Ui.AjoutCommandeProduitBox.currentText()  # récupérer la valeur de produit
 
                                                             # afficher les valeurs dans le tableau
@@ -1223,12 +1148,6 @@ class Recettes(QtWidgets.QMainWindow):
                         self.Ui.PrixPecLabel.setText(str(self.ReqInstance.SommeTotalPec(IdCommande)))
                         self.Ui.PrixPayeLabel.setText(str(self.ReqInstance.SommeTotalPaye(IdCommande)))
 
-
-                    # if self.ReqInstance.AddTableTamponCommande(InfoDataTampon) == 0:
-
-                        #if self.ReqInstance.DistinctProduit(IdProduit) == 0 :
-
-                        # TotalCommande = self.ReqInstance.SommeDetailCommande(IdCommande)
             except:
                 print("Impossible d'ajouter des champs vides")
         else:
@@ -1241,16 +1160,6 @@ class Recettes(QtWidgets.QMainWindow):
         self.Ui.TableauAjouterCommande.removeItemWidget(str(IdProduit))
 
 
-        # fonction pour supprimer un élément dans l'arbre
-        # def deletetreerow(self):
-        #     items = self.vue.selectedIndexes()
-        #     if len(items) == 0:
-        #         print('auncun item sélèctionné')
-        #         return
-        #     item = self.model.itemFromIndex(items[0])
-        #
-        #     if item.parent() != None:
-        #         item.parent().removeRow(item.row())
 
     def AddCommandeInamOkProduit(self):
 
@@ -1329,7 +1238,6 @@ class Recettes(QtWidgets.QMainWindow):
 
                 self.Ligne +=1
 
-                # je vais calculer le montant brut
 
                 ### Ajouter à la table TamponCommande
 
@@ -1596,14 +1504,6 @@ class Recettes(QtWidgets.QMainWindow):
 
         self.Ui.PageContent.setCurrentIndex(15)
         self.ShowCommandeCaisse()
-
-    # Retirer une ligne de commande
-
-    # def DeleteDeCommande(self):
-    #    self.Id = self.Ui.TableauAjouterCommande.selectedItems()[0].text(0)
-    #    if self.ReqInstance.GetProduitByName(self.Id) == 0:
-    #        self.ShowClient()
-
 
     # Afficher les commandes
 
@@ -2291,13 +2191,7 @@ class Recettes(QtWidgets.QMainWindow):
                 self.Ui.TableauBrouillard.topLevelItem(Ligne).setText(21, str(i[21]))
 
                 Ligne += 1
-                #
-                # Tb = self.ReqInstance.ShowMtBrutBrCaisse(DateDebut,DateFin)
-                # Tp = self.ReqInstance.ShowMtPecBrCaisse()
-                # Te = self.ReqInstance.ShowMtPayeBrCaisse()
-                # Tbx = Tb[0]
-                # Tpx = Tp[0]
-                # Tex = Te[0]
+
 
                 self.Ui.RecettesJourTotalBrutLabel.setText(str(self.ReqInstance.ShowMtBrutBrCaisse()))
                 self.Ui.RecettesJourTotalPecLabel.setText(str(self.ReqInstance.ShowMtPecBrCaisse()))
